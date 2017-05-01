@@ -11,14 +11,12 @@ end
 # grade field mapping
 def set_grade(lexile_code)
 
-  if lexile_code.nil?
+  if lexile_code.is_a? Integer
+    lexile_code = Integer lexile_code
+  else
     return 'undefined'
   end
-
-  lexile_code = Integer lexile_code
-
-
-
+  
   if lexile_code  < 530
     1
   elsif lexile_code < 650
@@ -72,7 +70,7 @@ File.open(file_location) do |fp|
       graded_book.summary =  book[11]
       graded_book.last_updated_date =  book[12]
       graded_book.lexile_combined =  book[13]
-      #graded_book.grade = set_grade book[5]
+      graded_book.grade = set_grade book[5]
     end
     i+=1
     puts("#{book}")
