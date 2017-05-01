@@ -72,7 +72,7 @@ File.open(file_location) do |fp|
       graded_book.summary =  book[11]
       graded_book.last_updated_date =  book[12]
       graded_book.lexile_combined =  book[13]
-      graded_book.grade = set_grade book[5]
+      #graded_book.grade = set_grade book[5]
     end
     i+=1
     puts("#{book}")
