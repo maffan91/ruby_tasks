@@ -1,7 +1,5 @@
 # Task 01: file reading from csv and grade mapping
 
-
-
 # book model class
 class Book
   attr_accessor :title,:author,:isbn,:isbn13,:lexile_code,:lexile,:publisher,:pages,:doc_type,:series,:awards,:summary,:last_updated_date,:lexile_combined,:grade
@@ -11,12 +9,12 @@ end
 # grade field mapping
 def set_grade(lexile_code)
 
-  if lexile_code.is_a? Integer
+  if  !lexile_code.nil?
     lexile_code = Integer lexile_code
   else
     return 'undefined'
   end
-  
+
   if lexile_code  < 530
     1
   elsif lexile_code < 650
@@ -54,8 +52,8 @@ File.open(file_location) do |fp|
   fp.each {|line|
     #skip the first line
     book = line.split('	')
+    graded_book = Book.new
     if i != 0
-      graded_book = Book.new
       graded_book.title = book[0]
       graded_book.author = book[1]
       graded_book.isbn =  book[2]
@@ -73,7 +71,7 @@ File.open(file_location) do |fp|
       graded_book.grade = set_grade book[5]
     end
     i+=1
-    puts("#{book}")
+    puts("#{graded_book.grade}")
   }
 end
 end_time = Time.new.inspect
