@@ -10,7 +10,7 @@ end
 def set_grade(lexile_code)
 
   if  !lexile_code.nil?
-    lexile_code = Integer lexile_code
+    lexile_code = lexile_code.to_i
   else
     return 'undefined'
   end
@@ -68,13 +68,17 @@ File.open(file_location) do |fp|
       graded_book.summary =  book[11]
       graded_book.last_updated_date =  book[12]
       graded_book.lexile_combined =  book[13]
-      #graded_book.grade = set_grade book[5]
+      if book[5].nil?
+        next
+      end
+      graded_book.grade = set_grade book[5]
     end
     i+=1
-    puts("#{book}")
+    puts("#{graded_book.grade}")
   }
 end
 end_time = Time.new.inspect
+puts("Records Processed: #{i}")
 puts("Start Time: #{start_time}")
 puts("End Time: #{end_time}")
 
