@@ -79,14 +79,15 @@ start_time = Time.new.inspect
 #   }
 # end
 
-File.open(file_location) do |fp|
+fp = File.open(file_location)
 
-
-    chunk = get_chunk(fp,5)
+  until fp.eof?
+    chunk = get_chunk(fp, 5)
     puts(chunk)
+    fp.seek(50, IO::SEEK_CUR)
+  end
 
-
-end
+fp.close
 
 
 
