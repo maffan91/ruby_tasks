@@ -1,0 +1,8 @@
+I will be using this file to get the complete text analysis later on, but for now my task is to 
+get the word count, character count and other statistics about a simple text.
+I am trying it all for myself.
+Later-on, I will be following the ruby programming book to make a complete text analyzer that can be used 
+to analyze any kind of text file.
+I believe that advancement come in any language but it takes some time. None can get advancement over night.
+Patience is required for such kind of achievement.
+Now, I am adding more in it
